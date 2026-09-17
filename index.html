@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#070b16">
+
+    <meta
+        name="description"
+        content="CalcX Pro — premium 3D scientific calculator"
+    >
+
+    <title>CalcX Pro — 3D Scientific Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- BACKGROUND -->
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+
+    <div class="floating-ring ring-a"></div>
+    <div class="floating-ring ring-b"></div>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                <span>∑</span>
+                <i></i>
+            </div>
+
+            <div class="brand-info">
+                <h1>CalcX <span>Pro</span></h1>
+                <p>PRECISION SCIENTIFIC ENGINE</p>
+            </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <div class="engine-card">
+                <span class="online-dot"></span>
+
+                <div>
+                    <strong>ENGINE ONLINE</strong>
+                    <small>READY FOR INPUT</small>
+                </div>
+            </div>
+
+            <button
+    id="themeBtn"
+    class="theme-button"
+    type="button"
+    aria-label="Switch theme"
+    title="Switch theme"
+>
+    <span id="themeIcon">☾</span>
+</button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="main-layout">
+
+        <!-- CALCULATOR -->
+        <section class="calculator-panel">
+
+            <div class="panel-light"></div>
+            <div class="panel-glow"></div>
+
+            <!-- HEADER -->
+            <div class="panel-header">
+
+                <div>
+                    <span class="eyebrow">
+                        CALCULATION CONSOLE
+                    </span>
+
+                    <h2>Scientific Calculator</h2>
+
+                    <p class="panel-subtitle">
+                        High precision • Fast response • Safe calculations
+                    </p>
+                </div>
+
+                <div class="pro-badge">
+                    <strong>PRO</strong>
+                    <span>8.0</span>
+                </div>
+
+            </div>
+
+
+            <!-- DISPLAY -->
+            <div class="calculator-display">
+
+                <div class="display-frame"></div>
+                <div class="display-shine"></div>
+
+                <div class="display-top">
+
+                    <span
+                        id="displayMode"
+                        class="display-mode"
+                    >
+                        DEG
+                    </span>
+
+                    <div class="display-actions">
+
+                        <span
+                            id="memoryIndicator"
+                            class="memory-indicator"
+                        >
+                            M
+                        </span>
+
+                        <button
+                            id="clearEntryBtn"
+                            class="ce-button"
+                            type="button"
+                            title="Clear entry"
+                        >
+                            CE
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="expressionDisplay"
+                    class="expression-display"
+                >
+                    0
+                </div>
+
+                <div
+                    id="resultDisplay"
+                    class="result-display"
+                    aria-live="polite"
+                >
+                    0
+                </div>
+
+                <div class="display-bottom">
+
+                    <span id="displayMessage">
+                        Ready
+                    </span>
+
+                    <span
+                        id="answerLabel"
+                        class="answer-label"
+                    >
+                        ANS 0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROL -->
+            <div class="control-row">
+
+                <div class="angle-switch">
+
+                    <button
+                        id="degBtn"
+                        class="angle-button active"
+                        type="button"
+                    >
+                        DEG
+                    </button>
+
+                    <button
+                        id="radBtn"
+                        class="angle-button"
+                        type="button"
+                    >
+                        RAD
+                    </button>
+
+                </div>
+
+                <div class="keyboard-status">
+
+                    <span class="keyboard-icon">⌨</span>
+
+                    <span>
+                        Keyboard enabled
+                    </span>
+
+                    <span class="status-pulse"></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEMORY -->
+            <div class="memory-row">
+
+                <button
+                    class="memory-button"
+                    data-action="memory-clear"
+                    type="button"
+                >
+                    <small>MEM</small>
+                    MC
+                </button>
+
+                <button
+                    class="memory-button"
+                    data-action="memory-recall"
+                    type="button"
+                >
+                    <small>MEM</small>
+                    MR
+                </button>
+
+                <button
+                    class="memory-button"
+                    data-action="memory-add"
+                    type="button"
+                >
+                    <small>MEM</small>
+                    M+
+                </button>
+
+                <button
+                    class="memory-button"
+                    data-action="memory-subtract"
+                    type="button"
+                >
+                    <small>MEM</small>
+                    M−
+                </button>
+
+                <button
+                    class="memory-button"
+                    data-action="memory-store"
+                    type="button"
+                >
+                    <small>MEM</small>
+                    MS
+                </button>
+
+            </div>
+
+
+            <!-- SCIENTIFIC -->
+            <div class="scientific-row">
+
+                <button class="scientific-button" data-value="sin(" type="button">
+                    <span>sin</span>
+                </button>
+
+                <button class="scientific-button" data-value="cos(" type="button">
+                    <span>cos</span>
+                </button>
+
+                <button class="scientific-button" data-value="tan(" type="button">
+                    <span>tan</span>
+                </button>
+
+                <button class="scientific-button" data-value="log(" type="button">
+                    <span>log</span>
+                </button>
+
+                <button class="scientific-button" data-value="ln(" type="button">
+                    <span>ln</span>
+                </button>
+
+                <button class="scientific-button" data-value="sqrt(" type="button">
+                    <span>√</span>
+                </button>
+
+                <button class="scientific-button" data-value="^2" type="button">
+                    <span>x²</span>
+                </button>
+
+                <button class="scientific-button" data-value="^" type="button">
+                    <span>xʸ</span>
+                </button>
+
+                <button class="scientific-button" data-value="(" type="button">
+                    <span>(</span>
+                </button>
+
+                <button class="scientific-button" data-value=")" type="button">
+                    <span>)</span>
+                </button>
+
+            </div>
+
+
+            <!-- KEYPAD -->
+            <div class="keypad">
+
+                <button
+                    class="key key-danger"
+                    data-action="clear"
+                    type="button"
+                >
+                    AC
+                </button>
+
+                <button
+                    class="key key-secondary"
+                    data-action="backspace"
+                    type="button"
+                >
+                    ⌫
+                </button>
+
+                <button
+                    class="key key-secondary"
+                    data-value="%"
+                    type="button"
+                >
+                    %
+                </button>
+
+                <button
+                    class="key key-operator"
+                    data-value="/"
+                    type="button"
+                >
+                    ÷
+                </button>
+
+
+                <button class="key key-number" data-value="7" type="button">7</button>
+                <button class="key key-number" data-value="8" type="button">8</button>
+                <button class="key key-number" data-value="9" type="button">9</button>
+
+                <button
+                    class="key key-operator"
+                    data-value="*"
+                    type="button"
+                >
+                    ×
+                </button>
+
+
+                <button class="key key-number" data-value="4" type="button">4</button>
+                <button class="key key-number" data-value="5" type="button">5</button>
+                <button class="key key-number" data-value="6" type="button">6</button>
+
+                <button
+                    class="key key-operator"
+                    data-value="-"
+                    type="button"
+                >
+                    −
+                </button>
+
+
+                <button class="key key-number" data-value="1" type="button">1</button>
+                <button class="key key-number" data-value="2" type="button">2</button>
+                <button class="key key-number" data-value="3" type="button">3</button>
+
+                <button
+                    class="key key-operator"
+                    data-value="+"
+                    type="button"
+                >
+                    +
+                </button>
+
+
+                <button
+                    class="key key-secondary"
+                    data-action="toggle-sign"
+                    type="button"
+                >
+                    ±
+                </button>
+
+                <button class="key key-number" data-value="0" type="button">
+                    0
+                </button>
+
+                <button class="key key-number" data-value="." type="button">
+                    .
+                </button>
+
+                <button
+                    class="key key-equals"
+                    data-action="calculate"
+                    type="button"
+                >
+                    =
+                </button>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <div class="system-footer">
+
+                <span class="system-chip">
+                    <i></i>
+                    SAFE AST ENGINE
+                </span>
+
+                <span class="footer-divider"></span>
+
+                <span class="system-chip">
+                    <i></i>
+                    API CONNECTED
+                </span>
+
+                <span class="footer-divider"></span>
+
+                <span class="system-chip">
+                    <i></i>
+                    99.99% UPTIME
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+        <aside class="history-panel">
+
+            <div class="history-panel-glow"></div>
+
+            <div class="history-top">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ACTIVITY CENTER
+                    </span>
+
+                    <h2>Calculation History</h2>
+
+                    <p class="history-subtitle">
+                        Your recent precision calculations
+                    </p>
+
+                </div>
+
+                <button
+                    id="clearHistoryBtn"
+                    class="clear-history"
+                    type="button"
+                >
+                    CLEAR
+                </button>
+
+            </div>
+
+
+            <div class="history-stat">
+
+                <div class="history-stat-icon">
+                    ↯
+                </div>
+
+                <div class="history-stat-info">
+
+                    <strong id="historyCount">0</strong>
+
+                    <span>
+                        calculations
+                    </span>
+
+                </div>
+
+                <div class="history-stat-live">
+                    <i></i>
+                    LIVE
+                </div>
+
+            </div>
+
+
+            <div
+                id="historyList"
+                class="history-list"
+            >
+
+                <div class="empty-history">
+
+                    <div class="empty-orbit">
+                        <div class="empty-history-icon">
+                            ∑
+                        </div>
+                    </div>
+
+                    <strong>
+                        No calculations yet
+                    </strong>
+
+                    <span>
+                        Start calculating and your activity will appear here.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-bottom">
+
+                <div>
+                    <span class="footer-brand-dot"></span>
+                    CalcX Pro
+                </div>
+
+                <span>v8.0</span>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <span class="toast-check">
+            ✓
+        </span>
+
+        <span id="toastText">
+            Ready
+        </span>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
